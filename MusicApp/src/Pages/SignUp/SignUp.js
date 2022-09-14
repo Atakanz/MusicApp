@@ -13,12 +13,7 @@ const SignUp = ({navigation}) => {
 	const [newUserSurname, setNewUserSurname] = useState('');
 
 	registerUser = async (email, password, firstName, lastName) => {
-		await firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).then(()=> {
-			firebase.auth().currentUser.sendEmailVerification({
-				handleCodeInApp: true,
-				url: 'test-ce77e.firebaseapp.com',
-			}).then(()=>{alert('Verification email sent')})
-		}).catch((error) => {alert(error.message)})
+		await firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword)
 		.then(()=> {firebase.firestore().collection('users')
 		.doc(firebase.auth().currentUser.uid)
 		.set({newUserName, newUserSurname, newUserEmail})}).catch((error)=>{alert(error.message)})
