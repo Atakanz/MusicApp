@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {BottomTab} from './BottomTab'
 import SignIn from '../Pages/SignIn/SignIn'
 import SignUp from '../Pages/SignUp/SignUp';
+import PlayList from '../Pages/PlayListPage/PlayList';
 import {firebase} from '../../config';
 
 const Stack = createNativeStackNavigator();
@@ -26,15 +27,16 @@ useEffect(() => {
 }, []);
 
   if (initializing) return null;
-  console.log(user)
+  // console.log(user)
 
   if (!user) {
   return ( 
   <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name='SignIn' component={SignIn} />
       <Stack.Screen name='SignUp' component={SignUp} />
       <Stack.Screen name='BottomTab' component={BottomTab} />
+      <Stack.Screen options={{headerShown:true}} name='Songs' component={PlayList} />
     </Stack.Navigator>
   </NavigationContainer> 
   )
@@ -42,8 +44,9 @@ useEffect(() => {
    
   return (
   <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name='BottomTab' component={BottomTab} />
+      <Stack.Screen options={{headerShown:true}} name='Songs' component={PlayList} />
     </Stack.Navigator>
   </NavigationContainer> 
   )
