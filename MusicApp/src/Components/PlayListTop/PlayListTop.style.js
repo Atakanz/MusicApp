@@ -4,7 +4,7 @@ export default StyleSheet.create({
     coverImage: {
         width: 180,
         height: 150,
-        resizeMode: 'contain',
+        resizeMode: 'cover',
         borderBottomLeftRadius: 25,
     },
     coverImageView: {
