@@ -5,7 +5,7 @@ import PlayListUnit from "../../Components/PlayListUnit";
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from "react-redux";
 import PlayListTop from "../../Components/PlayListTop";
-import useFetch from "../../Components/Hooks/useFetch";
+import useFetch from "../../Hooks/useFetch";
 import {setGenreList} from "../../Management/Features/SongList/songListSlice";
 
 const TrackListGenre = ({route, navigation}) => {
@@ -38,7 +38,8 @@ const TrackListGenre = ({route, navigation}) => {
              <PlayListUnit
              icon={songIcon}
              trackName={item.name}
-             artistName={item.artistName} />}
+             artistName={item.artistName}
+             id={item.id} />}
             />
             </View>
         </SafeAreaView> 
