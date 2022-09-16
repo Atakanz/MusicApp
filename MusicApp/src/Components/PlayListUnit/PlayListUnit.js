@@ -1,21 +1,28 @@
 import React from "react";
-import {SafeAreaView, View, Text} from "react-native";
+import {SafeAreaView, View, Text, Pressable} from "react-native";
 import styles from './PlayListUnit.style'
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setLikedSong} from "../../Management/Features/SongList/songListSlice";
-import { useState } from "react";
+import {unlikeSong} from "../../Management/Features/SongList/songListSlice";
 
-const PlayListUnit = ({icon, albumName, trackName, artistName}) => {
+
+const PlayListUnit = ({icon, albumName, trackName, artistName, id}) => {
   const dispatch = useDispatch();
-  const [likedSituation, setLikedSituation] = useState(false);
+  const heart = <Icon style={styles.heartIcon} name="heart-outline" size={25} color="gray" /> 
+  const heartLiked = <Icon style={styles.heartIconLiked} name="heart" size={25} color="#20b2aa" />
+  const likedSongList = useSelector(state => state.songList.LikedSong)
+
+  const inLikedSongs = likedSongList.some(item => 
+       item.idValue === id );
+ 
   const likeSong = () => {
-  // dispatch(setLikedSong({albumName: albumName, trackName: trackName, artistName: artistName}));
-  setLikedSituation(true);
+  dispatch(setLikedSong({album: albumName, track: trackName, artist: artistName, idValue: id}));
   }
   
-  const heart = <Icon.Button style={styles.heartIcon} name="heart-outline" size={25} color="black" onPress={likeSong} /> 
-  const heartLiked = <Icon.Button style={styles.heartIconLiked} name="heart-outline" size={25} color="#20b2aa" /> 
+  const removeSong = () => {
+  dispatch(unlikeSong(id));
+  }
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.rowDirection}>
@@ -33,7 +40,12 @@ const PlayListUnit = ({icon, albumName, trackName, artistName}) => {
                    <Text style={styles.textAlbum}>{artistName}</Text>
                 </View>
             </View>
-            {!likedSituation ? <View style={styles.heartButton}>{heart}</View> : <View style={styles.heartButton}>{heartLiked}</View>}
+            {inLikedSongs ?
+            <Pressable onPress={removeSong} 
+            style={styles.heartButton}>{heartLiked}</Pressable> :
+             <Pressable
+             onPress={likeSong}
+             style={styles.heartButton}>{heart}</Pressable>}
             </View>
         </SafeAreaView>
     )
