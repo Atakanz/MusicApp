@@ -7,6 +7,7 @@ const TextInputs = props => {
     <TextInput
       style={styles.formUnit}
       label={props.labelName}
+      onFocus={props.focusTask}
       placeholder={props.holder}
       onChangeText={props.task}
       secureTextEntry={props.security}
