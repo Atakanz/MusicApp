@@ -10,5 +10,12 @@ export default StyleSheet.create({
    },
    iconView: {
       marginHorizontal: 10,
-   }
+   },
+   heartButton: {
+      marginLeft: 'auto',
+      marginRight: 18,
+   },
+   heartIcon: {
+    backgroundColor: '#fff',
+   },
 })
