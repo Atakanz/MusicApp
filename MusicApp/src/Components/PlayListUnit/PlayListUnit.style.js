@@ -14,8 +14,6 @@ export default StyleSheet.create({
    heartButton: {
       marginLeft: 'auto',
       marginRight: 18,
-   },
-   heartIcon: {
-    backgroundColor: '#fff',
+      justifyContent: 'center',
    },
 })
