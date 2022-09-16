@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {SafeAreaView, FlatList, Text} from "react-native";
-import useFetch from "../Hooks/useFetch";
+import useFetch from "../../Hooks/useFetch";
 import PlayListCard from "../PlayListCard/PlayListCard";
 import styles from './SearchPageGenreList.style';
 

@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import PlayListUnit from '../../Components/PlayListUnit';
 import PlayListCard from '../../Components/PlayListCard/PlayListCard';
 import styles from './Home.style';
-import useFetch from '../../Components/Hooks/useFetch';
+import useFetch from '../../Hooks/useFetch';
 import {setSongList} from '../../Management/Features/SongList/songListSlice';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 
