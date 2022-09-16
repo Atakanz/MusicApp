@@ -3,7 +3,7 @@ import {SafeAreaView, View} from 'react-native';
 import TextInputs from '../../Components/TextInputs/TextInputs';
 import styles from './Search.style';
 import {useSelector, useDispatch} from 'react-redux';
-import useFetch from '../../Components/Hooks/useFetch';
+import useFetch from '../../Hooks/useFetch';
 import GenreNamesList from '../../Components/SearchPageGenreList/SearchPageGenreList';
 import FilterSong from '../../Components/SearchPageFilterSong/SearchPageFilterSongList';
 import {setPlayList} from '../../Management/Features/SongList/songListSlice';
