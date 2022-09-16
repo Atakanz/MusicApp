@@ -4,39 +4,32 @@ import {useDispatch, useSelector} from 'react-redux';
 import PlayListUnit from '../../Components/PlayListUnit';
 import PlayListCard from '../../Components/PlayListCard/PlayListCard';
 import styles from './Home.style';
-import axios from 'axios';
+import useFetch from '../../Components/Hooks/useFetch';
 import {setSongList} from '../../Management/Features/SongList/songListSlice';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 
 const Home = ({navigation}) => {
 	const dispatch=useDispatch();
 	const [playListInfo, setPlayListInfo] = useState([]);
-  // this will be the data of flat list
+  const {response} = useFetch({
+    url: "https://api.napster.com/v2.2/playlists?apikey=NjgyZGQzNzUtZWU5Mi00ZGU1LWE4ZGItYjZmMWRiYjcwY2Jm"
+  });
+  const {response2} = useFetch({
+    url: "https://api.napster.com/v2.2/albums/new?apikey=NjgyZGQzNzUtZWU5Mi00ZGU1LWE4ZGItYjZmMWRiYjcwY2Jm"
+  });
   useEffect(() => {
-    // getSongList;
-     axios.get(
-      "https://api.napster.com/v2.2/albums/new?apikey=NjgyZGQzNzUtZWU5Mi00ZGU1LWE4ZGItYjZmMWRiYjcwY2Jm",
-      )
-      .then(response => {
-        dispatch(setSongList(response.data.albums));
-      });
-     axios.get(
-        'https://api.napster.com/v2.2/playlists?apikey=NjgyZGQzNzUtZWU5Mi00ZGU1LWE4ZGItYjZmMWRiYjcwY2Jm',
-      )
-      .then(response => {  
-        setPlayListInfo(response.data.playlists);
-      });
-  }, []);
-
-  // const getSongList = () => {
-  //   getData("/v2.2/genres/g.397/albums/new", "albums");
-  // }
+    if (response !== null) {
+    setPlayListInfo(response.playlists)
+   }
+    if (response2 !== null) {
+    dispatch(setSongList(response2.albums));
+   }
+  }, [response, response2]);
 
   const songList = useSelector(state=>state.songList.songList)
 
 	const album = <Icon name="album" size={40} color="darkgray" />
 
- 
 	return (
 	<SafeAreaView>
     <Text style={styles.headerText}>Playlists</Text>
@@ -48,7 +41,7 @@ const Home = ({navigation}) => {
     renderItem={({item}) => (
     <PlayListCard
     genreName={item.name}
-    task={() => navigation.navigate("Songs", {id: item.id, name: item.name, images: item.images, description: item.description})} /> ) } 
+    task={() => navigation.navigate("TrackListPlaylist", {item})} /> ) } 
     />
     <FlatList
     ListHeaderComponent={
