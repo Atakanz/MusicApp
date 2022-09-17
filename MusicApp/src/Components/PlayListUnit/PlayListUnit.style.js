@@ -9,11 +9,17 @@ export default StyleSheet.create({
     flexDirection: 'row',
    },
    iconView: {
-      marginHorizontal: 10,
+    marginHorizontal: 10,
    },
    heartButton: {
-      marginLeft: 'auto',
-      marginRight: 18,
-      justifyContent: 'center',
+    marginLeft: 'auto',
+    marginRight: 18,
+    justifyContent: 'center',
    },
+   textAlbumDark: {
+   color: '#fff'
+   },
+   textAlbumLight: {
+   color: '#212121'
+   }
 })

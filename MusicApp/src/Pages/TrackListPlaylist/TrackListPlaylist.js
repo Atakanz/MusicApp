@@ -29,9 +29,10 @@ const TrackListPlaylist = ({route, navigation}) => {
       }
       }, [response]);
     const {images} = item;
+    const theme = useSelector(state => state.theme.theme)
     const songList = useSelector(state => state.songList.PlayList)
     return (
-        <SafeAreaView>
+        <SafeAreaView style={[styles.container, styles[`container${theme}`]]}>
             <PlayListTop
             imageUrl={images[0].url}
             name={item.name}

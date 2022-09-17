@@ -8,10 +8,11 @@ import styles from './LikedSongs.style';
 const LikedSongs = () => {
 	const likedSongs = useSelector(state=>state.songList.LikedSong)
 	const songIcon = <Icon name="music-note-eighth" size={40} color="darkgray" />
+	const theme = useSelector(state => state.theme.theme)
 
 
 	return (
-	<SafeAreaView>
+	<SafeAreaView style={[styles.container, styles[`container${theme}`]]}>
 		<Text style={styles.headerText}>Your playlist</Text>
 		<FlatList 
 		data = {likedSongs}

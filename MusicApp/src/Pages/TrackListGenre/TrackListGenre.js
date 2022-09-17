@@ -24,10 +24,10 @@ const TrackListGenre = ({route, navigation}) => {
       }
       }, [response]);
 
-    
+    const theme = useSelector(state => state.theme.theme)
     const songList = useSelector(state => state.songList.GenreList)
     return (
-        <SafeAreaView>
+        <SafeAreaView style={[styles.container, styles[`container${theme}`]]}>
             <PlayListTop
             name={item.name} />
             <View style={styles.songListView} >

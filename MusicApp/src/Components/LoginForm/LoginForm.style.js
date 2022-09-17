@@ -11,11 +11,11 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   logoView: {
-    marginBottom: 17,
+    marginBottom: 50,
     alignItems: 'center',
   },
   logo: {
-    width: 140,
+    width: 128,
     height: 100,
   },
   buttonRow: {

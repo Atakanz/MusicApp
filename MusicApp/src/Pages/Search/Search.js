@@ -9,6 +9,7 @@ import FilterSong from '../../Components/SearchPageFilterSong/SearchPageFilterSo
 import {setPlayList} from '../../Management/Features/SongList/songListSlice';
 
 
+
 const Search = ({navigation}) => {
 	const [songInput, setSongInput] = useState(null);
 	const [genreNames, setGenreNames] = useState([]);
@@ -17,11 +18,12 @@ const Search = ({navigation}) => {
 	const searchButtonTask = () => {
 	setIsFocused(true);
 	}
+	const theme = useSelector(state => state.theme.theme)
 	const {response} = useFetch({
-		url:'https://api.napster.com/v2.2/genres?apikey=NjgyZGQzNzUtZWU5Mi00ZGU1LWE4ZGItYjZmMWRiYjcwY2Jm'
+		url:'https://api.napster.com/v2.2/genres?apikey=NjgyZGQzNzUtZWU5Mi00ZGU1LWE4ZGItYjZmMWRiYjcwY2Jm&limit=10'
 	  });
 
-	  const {response2} = useFetch({url: "http://api.napster.com/v2.2/tracks/top?apikey=NjgyZGQzNzUtZWU5Mi00ZGU1LWE4ZGItYjZmMWRiYjcwY2Jm&limit=200"})
+	  const {response2} = useFetch({url: "http://api.napster.com/v2.2/tracks/top?apikey=NjgyZGQzNzUtZWU5Mi00ZGU1LWE4ZGItYjZmMWRiYjcwY2Jm&limit=10"})
 
 	useEffect(() => {
 		if (response !== null) {
@@ -43,7 +45,7 @@ const Search = ({navigation}) => {
     };
 	
 	return (
-	<SafeAreaView>
+	<SafeAreaView style={[styles.container, styles[`container${theme}`]]}>
 		<View style={styles.searchBar}>
 		<TextInputs 
 		labelName="Search"

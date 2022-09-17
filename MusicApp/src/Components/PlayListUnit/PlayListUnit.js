@@ -12,9 +12,10 @@ const PlayListUnit = ({icon, albumName, trackName, artistName, id}) => {
   const heart = <Icon style={styles.heartIcon} name="heart-outline" size={25} color="gray" /> 
   const heartLiked = <Icon style={styles.heartIconLiked} name="heart" size={25} color="#20b2aa" />
   const likedSongList = useSelector(state => state.songList.LikedSong)
+  const theme = useSelector(state => state.theme.theme)
 
   const inLikedSongs = likedSongList.some(item => 
-       item.idValue === id );
+       item.idValue === id);
  
   const likeSong = () => {
   dispatch(setLikedSong({album: albumName, track: trackName, artist: artistName, idValue: id}));
@@ -24,20 +25,20 @@ const PlayListUnit = ({icon, albumName, trackName, artistName, id}) => {
   dispatch(unlikeSong(id));
   }
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView>
             <View style={styles.rowDirection}>
             <View style={styles.iconView}>
               {icon}
             </View>
             <View>
             {albumName && <View>
-                  <Text style={styles.textAlbum}>{albumName}</Text>
-                </View> } 
+                  <Text style={[styles.textAlbum, styles[`textAlbum${theme}`]]}>{albumName}</Text>
+                </View> }
             {trackName && <View>
-                  <Text style={styles.textAlbum}>{trackName}</Text>
-                </View> }   
+                  <Text style={[styles.textAlbum, styles[`textAlbum${theme}`]]}>{trackName}</Text>
+                </View> }
                 <View>
-                   <Text style={styles.textAlbum}>{artistName}</Text>
+                   <Text style={[styles.textAlbum, styles[`textAlbum${theme}`]]}>{artistName}</Text>
                 </View>
             </View>
             {inLikedSongs ?

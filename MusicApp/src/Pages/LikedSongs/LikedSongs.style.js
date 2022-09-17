@@ -8,4 +8,13 @@ export default StyleSheet.create({
         marginLeft: 10,
         marginVertical: 5,
     },
+    containerDark: {
+        backgroundColor: '#212121'
+    },
+    containerLight: {
+        backgroundColor: '#fff'
+    },
+    container: {
+        flex: 1,
+    }
 })

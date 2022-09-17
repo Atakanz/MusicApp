@@ -10,5 +10,14 @@ export default StyleSheet.create({
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
         height: '90%',
+    },
+    containerDark: {
+        backgroundColor: '#212121'
+    },
+    containerLight: {
+        backgroundColor: '#fff',
+    },
+    container: {
+        flex:1
     }
 })

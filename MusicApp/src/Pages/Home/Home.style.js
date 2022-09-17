@@ -10,5 +10,11 @@ export default StyleSheet.create({
     },
     playlistButtons: {
         height: '33%',
-    }
+    },
+    containerDark: {
+        backgroundColor: '#212121',
+    },
+    containerLight: {
+        backgroundColor: '#fff',
+    },
 })

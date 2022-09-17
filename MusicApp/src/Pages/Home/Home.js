@@ -9,6 +9,7 @@ import {setSongList} from '../../Management/Features/SongList/songListSlice';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 
 const Home = ({navigation}) => {
+  const theme = useSelector(state => state.theme.theme)
 	const dispatch=useDispatch();
 	const [playListInfo, setPlayListInfo] = useState([]);
   const {response} = useFetch({
@@ -31,7 +32,7 @@ const Home = ({navigation}) => {
 	const album = <Icon name="album" size={40} color="darkgray" />
 
 	return (
-	<SafeAreaView>
+	<SafeAreaView style={[styles.container, styles[`container${theme}`]]}>
     <Text style={styles.headerText}>Playlists</Text>
     <FlatList 
     style={styles.playlistButtons}
@@ -53,7 +54,8 @@ const Home = ({navigation}) => {
        <PlayListUnit
        icon={album}
        artistName={item.artistName}
-       albumName={item.name} />
+       albumName={item.name}
+       id={item.id} />
        } 
        />
 	</SafeAreaView>
