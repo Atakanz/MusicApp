@@ -5,24 +5,24 @@ import styles from './SignIn.style'
 import {firebase} from '../../../config'
 import {useDispatch, useSelector} from 'react-redux'
 import {logIn} from '../../Management/Features/User/userSlice'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignIn = ({navigation}) => {
 	const [userEmail, setUserEmail] = useState(null);
 	const [userPassword, setUserPassword] = useState(null);
   const dispatch = useDispatch();
 
-  loginUser = async (email, password) => {
-    try {
-      await firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
-    } catch (error){
-      alert(error.message)
-    }
+  
+  const loginUserButton = async () => {
+    await firebase.auth().signInWithEmailAndPassword(userEmail, userPassword).then(() => 
+    {dispatch(logIn({mail: userEmail, password: userPassword})),
+    AsyncStorage.setItem('savedUser', JSON.stringify({mail: userEmail, password: userPassword})
+    )}
+    );
   }
-  const loginUserButton = () => {
-    loginUser();
-    navigation.navigate("BottomTab");
-    dispatch(logIn({userEmail, userPassword}));
-  }
+
+  
+  
   const navigateSignUp = () => {
     navigation.navigate("SignUp")
   }
@@ -30,6 +30,7 @@ const SignIn = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container} >
       <LoginForm
+        isLogoExist={require('../../Assets/logo.png')}
         holder1="E-mail"
         holder2="Password"
         name1="Sign In"
