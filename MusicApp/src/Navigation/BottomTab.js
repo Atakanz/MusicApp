@@ -8,13 +8,14 @@ import {Pressable} from 'react-native';
 import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator();
-const editProfile = <Icon name="pencil-outline" size={30} 
-    color="darkgray" style={{marginRight: 15}} />
+
 
 
 export const BottomTab = ({navigation}) => {
 	const theme = useSelector(state => state.theme.theme);
     const colorSelect = theme === 'Dark' ? '#fff' : '#212121';
+	const editProfile = <Icon name="pencil-outline" size={30} 
+    color={colorSelect} style={{marginRight: 15}} />
 	return (
 	<Tab.Navigator screenOptions={{
         headerTintColor: theme === 'Dark' ? '#fff' : '#212121',
