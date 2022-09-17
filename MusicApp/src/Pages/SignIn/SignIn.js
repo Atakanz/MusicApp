@@ -20,7 +20,7 @@ const SignIn = ({navigation}) => {
     )}
     );
   }
-
+  const theme = useSelector(state => state.theme.theme)
   
   
   const navigateSignUp = () => {
@@ -28,7 +28,7 @@ const SignIn = ({navigation}) => {
   }
   
   return (
-    <SafeAreaView style={styles.container} >
+    <SafeAreaView style={[styles.container, styles[`container${theme}`]]} >
       <LoginForm
         isLogoExist={require('../../Assets/logo.png')}
         holder1="E-mail"

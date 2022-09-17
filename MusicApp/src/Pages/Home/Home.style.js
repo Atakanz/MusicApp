@@ -9,7 +9,7 @@ export default StyleSheet.create({
         marginVertical: 5,
     },
     playlistButtons: {
-        height: '33%',
+        height: '38%',
     },
     containerDark: {
         backgroundColor: '#212121',
