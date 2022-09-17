@@ -23,7 +23,7 @@ const SignUp = ({navigation}) => {
 	return (
 	<SafeAreaView style={styles.container}>
 	<LoginForm
-	  // logo is shown only loginpages not editing page
+	  isLogoExist={require('../../Assets/logo.png')}
 	  holder1="E-mail"
 	  holder2="Password"
 	  holder3="Password again"
