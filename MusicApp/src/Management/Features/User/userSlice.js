@@ -17,7 +17,7 @@ export const userSlice = createSlice({
       state.user = action.payload;
     },
     logIn: (state, action) => {
-      AsyncStorage.setItem('savedUser', JSON.stringify(action.payload));
+      // AsyncStorage.setItem('savedUser', JSON.stringify(action.payload));
       state.user = action.payload;
     },
   },
